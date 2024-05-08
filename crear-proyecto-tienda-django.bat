@@ -1,9 +1,9 @@
 @echo off
 
-set "nombre_proyecto=tienda"
+set "nombre_proyecto=MapaCriminalidad"
 set "aplicacion_django_principal=core"
 set "aplicacion_django_apis=apirest"
-set "carpeta_proyectos=C:\ProyectosDjango\"
+set "carpeta_proyectos=C:\ChileProtector\"
 set "carpeta_proyecto_django=%carpeta_proyectos%%nombre_proyecto%"
 set "carpeta_ambiente_virtual=%carpeta_proyectos%%nombre_proyecto%_venv"
 set "activacion_ambiente_virtual=%carpeta_proyectos%%nombre_proyecto%_venv\Scripts\activate.bat"

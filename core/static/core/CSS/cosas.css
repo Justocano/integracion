@@ -39,8 +39,8 @@ a:hover{
     background-color:  rgba(0, 0, 0, 0.60);
     padding-top: 30px;
     padding-bottom: 30px;
-    width: 1500px;
-    margin-left: 225px;
+    margin-left: 25px;
+    margin-right: 25px;
     margin-bottom: 30px;
     border-radius: 30px;
 }
@@ -64,10 +64,10 @@ a:hover{
 
 .bodystyle1::before {
     content: "";
-    background-image: url("https://p4.wallpaperbetter.com/wallpaper/592/800/875/4k-2018-cars-lamborghini-aventador-s-roadster-luxury-cars-wallpaper-preview.jpg");
-    background-repeat: no-repeat;
+    background-image: url("https://www.tecnoseguro.com/media/xt-adaptive-images/480/media/k2/items/cache/9c4b682cf1a9a7a403cda4b2157151c7_XL.webp");
+   
     background-size: cover;
-    background-attachment: fixed;
+    
     position: fixed;
     top: 0;
     left: 0;
@@ -148,5 +148,38 @@ a:hover{
 }
 
 
+#centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+.mapa {
+    margin-right: 20px;
+}
 
+.leyenda {
+    display: flex;
+    flex-direction: column;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.cuadrado {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.seguro { background-color: green; }
+.poco-seguro { background-color: yellow; }
+.peligroso { background-color: red; }
+.vigilado { background-color: blue; }
+.leyenda-item span {
+    color: white; /* Cambia el color del texto a blanco */
+}

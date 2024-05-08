@@ -3,7 +3,7 @@ from django.shortcuts import  render, redirect
 from datetime import date
 from django.contrib.auth.models import User
 from .poblar import poblar_bd
-from .models import Perfil,Servicio
+from .models import Perfil,Servicio,Comuna
 from .forms import RegistroClienteForm, IngresarForm,ServicioForm,UsuarioForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
@@ -16,18 +16,18 @@ from .tools import eliminar_registro #, verificar_eliminar_registro
 def inicio(request): 
     if request.method == 'POST':
         buscar = request.POST.get('buscar')
-        registros = Servicio.objects.filter(nombre__icontains=buscar).order_by('nombre')
+        registros = Comuna.objects.filter(nombre__icontains=buscar).order_by('nombre')
     else:
-        registros = Servicio.objects.all().order_by('nombre')
+        registros = Comuna.objects.all().order_by('nombre')
 
-    servicios = []
+    comunas = []
     for registro in registros:
-        servicios.append(obtener_info_producto(registro.id))
-    datos = { 'servicios': servicios }
+        comunas.append(obtener_info_producto(registro.id))
+    datos = { 'comunas': comunas }
     return render(request, "core/inicio.html",datos)
 
-def ficha(request,servicio_id):
-    context = obtener_info_producto(servicio_id)
+def ficha(request,comuna_id):
+    context = obtener_info_producto(comuna_id)
     return render(request, 'core/Ficha.html', context)
 
 def reserva(request):
@@ -37,16 +37,16 @@ def salir(request):
     logout(request)
     return redirect(inicio)
 
-def obtener_info_producto(servicio_id):
+def obtener_info_producto(comuna_id):
 
-    servicios = Servicio.objects.get(id=servicio_id)
+    comunas = Comuna.objects.get(id=comuna_id)
     
     return {
-        'id':servicios.id,
-        'nombre': servicios.nombre,
-        'descripcion': servicios.descripcion,
-        'precio':servicios.precio,
-        'imagen': servicios.imagen,
+        'id':comunas.id,
+        'nombre': comunas.nombre,
+        'descripcion': comunas.descripcion,
+        'imagen': comunas.imagen,
+        'clase': comunas.Clase,
     }
 
 

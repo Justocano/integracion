@@ -24,30 +24,17 @@ class Categoria(models.Model):
             'accion_actualizar': 'actualizar la Categoría'
         }
 
-class Producto(models.Model):
-    categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, verbose_name='Categoría')
-    nombre = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre producto')
+class Comuna(models.Model):
+    id = models.AutoField(primary_key=True, verbose_name='ID')
+    nombre = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre Comuna')
     descripcion = models.CharField(max_length=400, blank=False, null=False, verbose_name='Descripción')
-    precio = models.IntegerField(blank=False, null=False, verbose_name='Precio')
-    descuento_subscriptor = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(100)],
-        blank=False,
-        null=False,
-        verbose_name='% Descuento subscriptor'
-    )
-    descuento_oferta = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(100)],
-        blank=False,
-        null=False,
-        verbose_name='% Descuento oferta'
-    )
     imagen = models.ImageField(upload_to='productos/', blank=False, null=False, verbose_name='Imagen')
-    
+    Clase = models.CharField(max_length=100, blank=False, null=False, verbose_name='Clase')
     class Meta:
-        db_table = 'Producto'
-        verbose_name = "Producto"
-        verbose_name_plural = "Productos"
-        ordering = ['categoria', 'nombre']
+        db_table = 'Comuna'
+        verbose_name = "Comuna"
+        verbose_name_plural = "Comunas"
+        ordering = ['id', 'nombre']
 
     def __str__(self):
         return f'{self.nombre} (ID {self.id})'
@@ -81,6 +68,7 @@ class Servicio(models.Model):
             'accion_eliminar': 'eliminar el Servicios',
             'accion_actualizar': 'actualizar el Servicios'
         }
+
 class Perfil(models.Model):
     USUARIO_CHOICES = [
         ('Cliente', 'Cliente'),
